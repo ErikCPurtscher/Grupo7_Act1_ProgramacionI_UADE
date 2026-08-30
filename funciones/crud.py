@@ -91,7 +91,7 @@ def modificar(socios,actividades):
                     if socios[fila][4] == 'activo'
                         socios[fila][4] = 'inactivo'
                     if socios[fila][4] == 'inactivo'
-                        socios[fila][4] == 'activo'
+                        socios[fila][4] = 'activo'
                 print()
                 #Mostrar nuevo registro
                 print("Registro modificado:")
