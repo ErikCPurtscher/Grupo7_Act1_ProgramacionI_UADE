@@ -66,8 +66,10 @@ def modificar(socios,actividades):
                     confirmacion = str(input("¿Modificar actividad? S/N : "))
                 if confirmacion == 'S':
                     #Print de las actividades validas
+                    cont = 0
                     for titulos in actividades:
                         print(cont ,"-", titulos)
+                        cont += 1
                     #Indicar actividad y validacion
                     actividad = int(input("Selecione actividad: "))
                     while actividad > len(actividades) or actividad < 0:
