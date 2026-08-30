@@ -6,7 +6,7 @@ Número de socio; Nombre; Actividad principal; Valor de la cuota; Estado.
 from funciones.menu import mostrar_menu, pedir_opcion
 
 
-ACTIVIDADES_VALIDAS = ["Musculacion", "Funcional", "Pileta", "Yoga", "Spinning"]
+actividades = ["Musculacion", "Funcional", "Pileta", "Yoga", "Spinning"]
 
 socios = [
     [1, "Erik Purtscher", "Musculacion", 15000, "Activo"],
