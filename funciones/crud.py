@@ -56,7 +56,7 @@ def modificar(socios,actividades):
                 while confirmacion != 'S' or confirmacion != 'N':
                     print("Valor inválido. Ingrese S o N.")
                     confirmacion = str(input("¿Modificar nombre? S/N : "))
-                if confirmacion = 'S':
+                if confirmacion == 'S':
                     socios[fila][1] = str(input("Ingrese nuevo nombre del socio: "))
                 print()
                 #Modificar actividad
@@ -64,7 +64,7 @@ def modificar(socios,actividades):
                 while confirmacion != 'S' or confirmacion != 'N':
                     print("Valor inválido. Ingrese S o N.")
                     confirmacion = str(input("¿Modificar actividad? S/N : "))
-                if confirmacion = 'S':
+                if confirmacion == 'S':
                     #Print de las actividades validas
                     for titulos in actividades:
                         print(cont ,"-", titulos)
@@ -79,7 +79,7 @@ def modificar(socios,actividades):
                 while confirmacion != 'S' or confirmacion != 'N':
                     print("Valor inválido. Ingrese S o N.")
                     confirmacion = str(input("¿Modificar valor de cuota? S/N : "))
-                if confirmacion = 'S':
+                if confirmacion == 'S':
                     socios[fila][3] = int(input("Ingrese nuevo valor de cuota: "))
                 print()
                 #Modificar estado
@@ -87,7 +87,7 @@ def modificar(socios,actividades):
                 while confirmacion != 'S' or confirmacion != 'N':
                     print("Valor inválido. Ingrese S o N.")
                     confirmacion = str(input("¿Modificar estado? S/N : "))
-                if confirmacion = 'S':
+                if confirmacion == 'S':
                     if socios[fila][4] == 'activo'
                         socios[fila][4] = 'inactivo'
                     if socios[fila][4] == 'inactivo'
