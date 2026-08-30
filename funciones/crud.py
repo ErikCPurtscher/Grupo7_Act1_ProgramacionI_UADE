@@ -88,9 +88,9 @@ def modificar(socios,actividades):
                     print("Valor inválido. Ingrese S o N.")
                     confirmacion = str(input("¿Modificar estado? S/N : "))
                 if confirmacion == 'S':
-                    if socios[fila][4] == 'activo'
+                    if socios[fila][4] == 'activo':
                         socios[fila][4] = 'inactivo'
-                    if socios[fila][4] == 'inactivo'
+                    if socios[fila][4] == 'inactivo':
                         socios[fila][4] = 'activo'
                 print()
                 #Mostrar nuevo registro
