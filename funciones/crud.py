@@ -99,7 +99,20 @@ def modificar(socios,actividades):
                 print("Registro modificado:")
                 print(socios[fila])
 
+def eliminar(socios):
+    print("Eliminar un registro")
+    
+    registro = int(input("Indique el registro a eliminar: "))
+    largo_socios = len(socios)
 
-def eliminar():
-    None
+    # Valido  el registro
+    while registro > largo_socios or registro <= 0:
+        registro = int(input("No existe el número de registro, seleccione otro: "))
+
+    # Recorrer la matriz y eliminar el socio encontrado
+    for fila in range(largo_socios):
+        if registro == socios[fila][0]:
+            print("Socio eliminado con éxito:", socios[fila])
+            socios.remove(socios[fila])
+            return
 
