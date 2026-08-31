@@ -10,7 +10,9 @@ def mostrar_menu():
     print("8. Salir")
 
 def pedir_opcion():
-    opcion = input("Seleccione una opción: ")
+    opcion = int(input("Seleccione una opción: "))
+    while opcion < 1 or opcion > 8:
+        opcion = int(input("Seleccione un número del 1 al 8: "))
     return opcion
 
   #op = int(input("Ingrese el númeor de una opción: "))

@@ -4,37 +4,39 @@
 Número de socio; Nombre; Actividad principal; Valor de la cuota; Estado.
 '''
 from funciones.menu import mostrar_menu, pedir_opcion
+from funciones.crud import dar_alta, consultar, modificar, eliminar
 
 
-actividades = ["Musculacion", "Funcional", "Pileta", "Yoga", "Spinning"]
+ACTIVIDADES = ["Musculacion", "Funcional", "Pileta", "Yoga", "Spinning"]
 
 socios = [
-    [1, "Erik Purtscher", "Musculacion", 15000, "Activo"],
-    [2, "Agostina Koya", "Pileta", 18000, "Activo"],
-    [3, "Felipe Storni", "Funcional", 16000, "Inactivo"],
-    [4, "Nicolas Defelippo", "Yoga", 14000, "Activo"],
-    [5, "Nardone Fernandez", "Spinning", 15500, "Inactivo"],
+    [1, "Erik Purtscher", "Musculacion", 15000, "activo"],
+    [2, "Agostina Koya", "Pileta", 18000, "activo"],
+    [3, "Felipe Storni", "Funcional", 16000, "inactivo"],
+    [4, "Nicolas Defelippo", "Yoga", 14000, "activo"],
+    [5, "Nardone Fernandez", "Spinning", 15500, "inactivo"],
 ]
 
-mostrar_menu()
-pedir_opcion()
-
-opcion = ""
+opcion = 0
 while opcion != 8:
     mostrar_menu()
     opcion = pedir_opcion()
 
     if opcion == 1:
-        None
+        dar_alta(socios, ACTIVIDADES)
     elif opcion == 2:
-        None
+        consultar(socios)
     elif opcion == 3:
-        None
+        modificar(socios, ACTIVIDADES)
     elif opcion == 4:
-        None
+        eliminar(socios)
     elif opcion == 5:
         None
+        #mostrar_todos(socios)
+    # 6 y 7 cuando estén listas
     elif opcion == 6:
         None
     elif opcion == 7:
         None
+    elif opcion == 8:
+        print("Saliendo...")
