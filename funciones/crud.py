@@ -1,8 +1,9 @@
+from funciones.utilidades import seleccionar_actividad
+from funciones.validaciones import validar_positivo, validar_texto
+
+
 def dar_alta(socios, actividades):
     print("Dar de alta un registro")
-
-    #El tema es que si usamos eliminar esto fallaria
-    #codigo = len(socios) + 1
 
     codigo_maximo = 0
     for socio in socios:
@@ -10,44 +11,42 @@ def dar_alta(socios, actividades):
             codigo_maximo = socio[0]
     codigo = codigo_maximo + 1
 
-    nombre = input("Nombre del socio: ")
-    cont =0
-    for titulos in actividades:
-        print(cont ,"-", titulos)
-        cont +=1
+    nombre = validar_texto("Nombre del socio: ")
+    nombre_actividad= seleccionar_actividad(actividades)
 
-    actividad = int(input("Selecione actividad: "))
-    while actividad >= len(actividades) or actividad <0:
-        actividad = int(input("Seleccione un número de actividad existente: "))
+    print("Ingrese el valor de la cuota")
+    valor_cuota = validar_positivo()
 
-    #for activ in range(len(actividades)):
-    #    nombre_actividad = actividades[actividad]
-    nombre_actividad = actividades[actividad]
-
-    valor_cuota = int(input("Valor de cuota: "))
     estado = "activo"
+
     socio = [codigo, nombre, nombre_actividad, valor_cuota, estado]
     socios.append(socio)
+
+    print("Socio registrado con éxito:")
     print(socio)
     return
 
 def consultar(socios):
     print("Consultar un registro")
 
-    registro = int(input("Indique el registro a consultar: "))
-
+    print("Indique el registro a consultar: ", end= "")
+    registro= validar_positivo()   # <---- Nose si hace falta validar por positivo acá 
     encontrado = False
-    for fila in range(len(socios)):
-        if registro == socios[fila][0]:
-            print(socios[fila])
-            encontrado = True
 
-    while encontrado == False:
-        registro = int(input("No existe el número de registro, seleccione otro: "))
+    while not encontrado:
+
         for fila in range(len(socios)):
             if registro == socios[fila][0]:
-                print(socios[fila])
+
+                print("Código:", socios[fila][0])
+                print("Socio:", socios[fila][1])
+                print("Actividad principal:", socios[fila][2])
+                print("Valor de la cuota:", socios[fila][3])
+                print("Estado:", socios[fila][4])
+
                 encontrado = True
+        if not encontrado:
+            registro = int(input("No existe el número de registro, seleccione otro: "))
 
 def modificar(socios, actividades):
     print("Modificar un registro")
