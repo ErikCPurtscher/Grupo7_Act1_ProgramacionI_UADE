@@ -48,6 +48,22 @@ def consultar(socios):
         if not encontrado:
             registro = int(input("No existe el número de registro, seleccione otro: "))
 
+
+#función buscar_socio para aplicar en funciones consultar y modificar
+def buscar_socio(socios, codigo):
+    encontrado = False
+    pos = 0
+    while pos < len(socios) and not encontrado:
+        if socios[pos][0] == codigo:
+            encontrado = True
+        else:
+            pos += 1
+    if not encontrado:
+        pos = -1
+    return pos
+
+
+
 def modificar(socios, actividades):
     print("Modificar un registro")
 
