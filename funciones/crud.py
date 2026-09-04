@@ -42,26 +42,19 @@ def consultar(socios):
     print("Consultar un registro")
 
     print("Indique el registro a consultar: ", end= "")
-    registro= validar_positivo()   # <---- Nose si hace falta validar por positivo acá 
-                                    # ERIK: Para mí sí hay que validar, por las dudas
-    encontrado = False
+    registro= validar_positivo()   
+    pos = buscar_socio(socios, registro)
 
-    while not encontrado:
-
-        for fila in range(len(socios)):
-            if registro == socios[fila][0]:
-
-                print("Código:", socios[fila][0])
-                print("Socio:", socios[fila][1])
-                print("Actividad principal:", socios[fila][2])
-                print("Valor de la cuota:", socios[fila][3])
-                print("Estado:", socios[fila][4])
-
-                encontrado = True
-        if not encontrado:
-            registro = int(input("No existe el número de registro, seleccione otro: "))
-
-
+        
+    if pos !=-1 :
+        print("Código:", socios[pos][0])
+        print("Socio:", socios[pos][1])
+        print("Actividad principal:", socios[pos][2])
+        print("Valor de la cuota:", socios[pos][3])
+        print("Estado:", socios[pos][4])
+    else:
+        print("El registro", registro, "no existe")
+  
 
 def modificar_socio(socios, actividades):
     print("Modificar un registro")
@@ -72,28 +65,28 @@ def modificar_socio(socios, actividades):
     if pos != -1:
         print("Registro encontrado.")
         # Modificar nombre y apellido
-        print("Nombre y Apellido: [" + socios[pos][1] +"]")
+        print("Nombre y Apellido: [" , socios[pos][1] ,"]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
             nombre = validar_texto("Ingres nuevo nombre y apellido: ")
             socios[pos][1] = nombre
         
         # Modificar actividad
-        print("Actividad principal: [" + socios[pos][2] + "]")
+        print("Actividad principal: [" , socios[pos][2] , "]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
             nueva_actividad = seleccionar_actividad(actividades)
             socios[pos][2] = nueva_actividad
 
         # Modificar valor de cuota
-        print("Valor de cuota: [" + socios[pos][3] + "]")
+        print("Valor de cuota: [" , socios[pos][3] , "]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
             valor_cuota = validar_positivo()
             socios[pos][3] = valor_cuota
 
         # Modificar estado
-        print("Estado: [" + socios[pos][4] + "]")
+        print("Estado: [" , socios[pos][4] , "]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
             if socios[pos][4] == 'activo':
@@ -113,7 +106,7 @@ def modificar_socio(socios, actividades):
         print("Estado:", socios[pos][4])
     else:
         
-        registro = int(input("No existe el número de registro, seleccione otro: "))
+        print("El registro", registro, "no existe")
 
                 
 
