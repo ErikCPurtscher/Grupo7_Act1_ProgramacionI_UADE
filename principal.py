@@ -4,7 +4,7 @@
 Número de socio; Nombre; Actividad principal; Valor de la cuota; Estado.
 '''
 from funciones.menu import mostrar_menu, pedir_opcion
-from funciones.crud import dar_alta, consultar, modificar, eliminar
+from funciones.crud import dar_alta, consultar, modificar_socio, eliminar
 
 
 ACTIVIDADES = ["Musculacion", "Funcional", "Pileta", "Yoga", "Spinning"]
@@ -27,7 +27,7 @@ while opcion != 8:
     elif opcion == 2:
         consultar(socios)
     elif opcion == 3:
-        modificar(socios, ACTIVIDADES)
+        modificar_socio(socios, ACTIVIDADES)
     elif opcion == 4:
         eliminar(socios)
     elif opcion == 5:

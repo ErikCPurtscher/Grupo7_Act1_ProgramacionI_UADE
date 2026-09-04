@@ -1,6 +1,18 @@
 from funciones.utilidades import seleccionar_actividad
-from funciones.validaciones import validar_positivo, validar_texto
+from funciones.validaciones import validar_positivo, validar_texto, validar_rango, validar_confirmacion
 
+#función buscar_socio para aplicar en funciones consultar y modificar
+def buscar_socio(socios, codigo):
+    encontrado = False
+    pos = 0
+    while pos < len(socios) and not encontrado:
+        if socios[pos][0] == codigo:
+            encontrado = True
+        else:
+            pos += 1
+    if not encontrado:
+        pos = -1
+    return pos
 
 def dar_alta(socios, actividades):
     print("Dar de alta un registro")
@@ -31,6 +43,7 @@ def consultar(socios):
 
     print("Indique el registro a consultar: ", end= "")
     registro= validar_positivo()   # <---- Nose si hace falta validar por positivo acá 
+                                    # ERIK: Para mí sí hay que validar, por las dudas
     encontrado = False
 
     while not encontrado:
@@ -49,89 +62,61 @@ def consultar(socios):
             registro = int(input("No existe el número de registro, seleccione otro: "))
 
 
-#función buscar_socio para aplicar en funciones consultar y modificar
-def buscar_socio(socios, codigo):
-    encontrado = False
-    pos = 0
-    while pos < len(socios) and not encontrado:
-        if socios[pos][0] == codigo:
-            encontrado = True
-        else:
-            pos += 1
-    if not encontrado:
-        pos = -1
-    return pos
 
-
-
-def modificar(socios, actividades):
+def modificar_socio(socios, actividades):
     print("Modificar un registro")
-
+    # Lectura del registro
     registro = int(input("Indique el registro a modificar: "))
+    # Búsqueda del registro. Si el registro existe, se solicitan los nuevos valores
+    pos = buscar_socio(socios, registro)
+    if pos != -1:
+        print("Registro encontrado.")
+        # Modificar nombre y apellido
+        print("Nombre y Apellido: [" + socios[pos][1] +"]")
+        confirmacion = validar_confirmacion()
+        if confirmacion == "S" or confirmacion == "s":
+            nombre = validar_texto("Ingres nuevo nombre y apellido: ")
+            socios[pos][1] = nombre
+        
+        # Modificar actividad
+        print("Actividad principal: [" + socios[pos][2] + "]")
+        confirmacion = validar_confirmacion()
+        if confirmacion == "S" or confirmacion == "s":
+            nueva_actividad = seleccionar_actividad(actividades)
+            socios[pos][2] = nueva_actividad
 
-    #si borro un socio, len(socios) ya no sirve para validar, busco por código
-    encontrado = False
-    for fila in range(len(socios)):
-        if registro == socios[fila][0]:
-            encontrado = True
+        # Modificar valor de cuota
+        print("Valor de cuota: [" + socios[pos][3] + "]")
+        confirmacion = validar_confirmacion()
+        if confirmacion == "S" or confirmacion == "s":
+            valor_cuota = validar_positivo()
+            socios[pos][3] = valor_cuota
 
-    while encontrado == False:
+        # Modificar estado
+        print("Estado: [" + socios[pos][4] + "]")
+        confirmacion = validar_confirmacion()
+        if confirmacion == "S" or confirmacion == "s":
+            if socios[pos][4] == 'activo':
+                socios[pos][4] = 'inactivo'
+            if socios[pos][4] == 'inactivo':
+                socios[pos][4] = 'activo'
+
+        # Mostrar registro modificado
+        # === IDEA ===> ACÁ TAMBIÉN SE PODRÍA ESPERAR UNA ÚLTIMA CONFIRMACIÓN
+            # Quizá si al inicio se utiliza un [while cont == 0] y que el cont solo aumente si en esta etapa se confirma la modificación del registro.
+            # De esa manera se mantiene el ciclo de 
+        print("Registro modificado.")   # === IDEA ===> ACÁ SE PODRÍA MOSTRAR EL REGISTRO MODIFICADO DE MANERA TABULADA
+        print("Código:", socios[pos][0])
+        print("Socio:", socios[pos][1])
+        print("Actividad principal:", socios[pos][2])
+        print("Valor de la cuota:", socios[pos][3])
+        print("Estado:", socios[pos][4])
+
+        
+    else:
         registro = int(input("No existe el número de registro, seleccione otro: "))
-        for fila in range(len(socios)):
-            if registro == socios[fila][0]:
-                encontrado = True
 
-    for fila in range(len(socios)):
-            if registro == socios[fila][0]:
-                print(socios[fila])
-                print()
-                #Modificar nombre
-                confirmacion = str(input("¿Modificar nombre? S/N : "))
-                while confirmacion != 'S' and confirmacion != 'N':
-                    print("Valor inválido. Ingrese S o N.")
-                    confirmacion = str(input("¿Modificar nombre? S/N : "))
-                if confirmacion == 'S':
-                    socios[fila][1] = str(input("Ingrese nuevo nombre del socio: "))
-                print()
-                #Modificar actividad
-                confirmacion = str(input("¿Modificar actividad principal? S/N : "))
-                while confirmacion != 'S' and confirmacion != 'N':
-                    print("Valor inválido. Ingrese S o N.")
-                    confirmacion = str(input("¿Modificar actividad? S/N : "))
-                if confirmacion == 'S':
-                    #Print de las actividades validas
-                    cont = 0
-                    for titulos in actividades:
-                        print(cont ,"-", titulos)
-                        cont += 1
-                    #Indicar actividad y validacion
-                    actividad = int(input("Selecione actividad: "))
-                    while actividad >= len(actividades) or actividad < 0:
-                        actividad = int(input("Seleccione un número de actividad existente: "))
-                    socios[fila][2] = actividades[actividad]
-                print()
-                #Modificar valor de cuota
-                confirmacion = str(input("¿Modificar valor de cuota? S/N : "))
-                while confirmacion != 'S' and confirmacion != 'N':
-                    print("Valor inválido. Ingrese S o N.")
-                    confirmacion = str(input("¿Modificar valor de cuota? S/N : "))
-                if confirmacion == 'S':
-                    socios[fila][3] = int(input("Ingrese nuevo valor de cuota: "))
-                print()
-                #Modificar estado
-                confirmacion = str(input("¿Modificar estado? S/N : "))
-                while confirmacion != 'S' and confirmacion != 'N':
-                    print("Valor inválido. Ingrese S o N.")
-                    confirmacion = str(input("¿Modificar estado? S/N : "))
-                if confirmacion == 'S':
-                    if socios[fila][4] == 'activo':
-                        socios[fila][4] = 'inactivo'
-                    if socios[fila][4] == 'inactivo':
-                        socios[fila][4] = 'activo'
-                print()
-                #Mostrar nuevo registro
-                print("Registro modificado:")
-                print(socios[fila])
+                
 
 def eliminar(socios):
     print("Eliminar un registro")
@@ -153,6 +138,6 @@ def eliminar(socios):
     for fila in range(len(socios)):
         if registro == socios[fila][0]:
             print("Socio eliminado con éxito:", socios[fila])
-            socios.remove(socios[fila])
+            socios.remove(socios[fila]) #No vimos la función remove en la materia, hay que usar pop
             return
 
