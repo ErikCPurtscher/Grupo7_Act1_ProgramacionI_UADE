@@ -111,9 +111,8 @@ def modificar_socio(socios, actividades):
         print("Actividad principal:", socios[pos][2])
         print("Valor de la cuota:", socios[pos][3])
         print("Estado:", socios[pos][4])
-
-        
     else:
+        
         registro = int(input("No existe el número de registro, seleccione otro: "))
 
                 

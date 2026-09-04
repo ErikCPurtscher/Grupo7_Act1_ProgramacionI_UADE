@@ -24,8 +24,8 @@ def validar_rango(minimo,maximo):
     return valor
 
 def validar_confirmacion():
-    confirmacion = input("¿Desea modificar modificar el valor? S/N : ")
+    confirmacion = input("¿Desea modificar el valor? S/N : ")
     while confirmacion != 'S' or confirmacion != 's' or confirmacion != 'N' or confirmacion != 'n':
         print("Valor inválido. Ingrese S o N.")
-        confirmacion = str(input("¿Desea modificar modificar el valor? S/N : "))
+        confirmacion = str(input("¿Desea modificar el valor? S/N : "))
     return confirmacion
