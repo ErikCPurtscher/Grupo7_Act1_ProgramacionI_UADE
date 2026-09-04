@@ -20,3 +20,16 @@ def seleccionar_actividad(actividades):
     print("el valor seleccionado", valor)
     return actividades[valor-1]
 
+
+def completar_espacios(texto, ancho):
+    cantidad_espacios = ancho - len(str(texto))
+    texto_con_espacios = str(texto) + " " * cantidad_espacios
+    return texto_con_espacios
+
+
+def calcular_ancho_texto(datos, columna, encabezado):
+    ancho = len(encabezado)
+    for i in range(len(datos)):
+        if len(str(datos[i][columna])) > ancho:
+            ancho = len(str(datos[i][columna]))
+    return ancho + 3

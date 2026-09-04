@@ -1,5 +1,7 @@
 from funciones.utilidades import seleccionar_actividad
 from funciones.validaciones import validar_positivo, validar_texto, validar_rango, validar_confirmacion
+from funciones.consultas import mostrar_socios
+
 
 #función buscar_socio para aplicar en funciones consultar y modificar
 def buscar_socio(socios, codigo):
@@ -44,14 +46,11 @@ def consultar(socios):
     print("Indique el registro a consultar: ", end= "")
     registro= validar_positivo()   
     pos = buscar_socio(socios, registro)
-
+    socio_consultado = []
         
     if pos !=-1 :
-        print("Código:", socios[pos][0])
-        print("Socio:", socios[pos][1])
-        print("Actividad principal:", socios[pos][2])
-        print("Valor de la cuota:", socios[pos][3])
-        print("Estado:", socios[pos][4])
+        socio_consultado.append(socios[pos])
+        mostrar_socios(socio_consultado)
     else:
         print("El registro", registro, "no existe")
   
@@ -62,6 +61,7 @@ def modificar_socio(socios, actividades):
     registro = int(input("Indique el registro a modificar: "))
     # Búsqueda del registro. Si el registro existe, se solicitan los nuevos valores
     pos = buscar_socio(socios, registro)
+
     if pos != -1:
         print("Registro encontrado.")
         # Modificar nombre y apellido
@@ -98,7 +98,7 @@ def modificar_socio(socios, actividades):
         # === IDEA ===> ACÁ TAMBIÉN SE PODRÍA ESPERAR UNA ÚLTIMA CONFIRMACIÓN
             # Quizá si al inicio se utiliza un [while cont == 0] y que el cont solo aumente si en esta etapa se confirma la modificación del registro.
             # De esa manera se mantiene el ciclo de 
-        print("Registro modificado.")   # === IDEA ===> ACÁ SE PODRÍA MOSTRAR EL REGISTRO MODIFICADO DE MANERA TABULADA
+        print("Registro modificado.")
         print("Código:", socios[pos][0])
         print("Socio:", socios[pos][1])
         print("Actividad principal:", socios[pos][2])
