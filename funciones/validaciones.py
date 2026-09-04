@@ -12,3 +12,13 @@ def validar_positivo():
         print("El valor debe ser positivo", end=" ")
         valor = int(input())
     return  valor
+
+def validar_rango(minimo,maximo):
+    print("Seleccione una actividad.")
+    print("Ingrese un número entre", minimo, "y", maximo, end=": ")
+    valor = int(input())
+    while valor < minimo or valor > maximo:
+        print("Seleccione una actividad.")
+        print("Ingrese un número entre", minimo, "y", maximo, end=": ")
+        valor = int(input())
+    return valor

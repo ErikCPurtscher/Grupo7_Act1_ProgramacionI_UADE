@@ -14,7 +14,7 @@ def seleccionar_actividad(actividades):
 
     valor = int(input("Seleccione una actividad: "))
     while valor < minimo or valor > largo_actividades:
-            print("El valor debe estar combrendido entre" , minimo, "y", len(actividades), end=": ")
+            print("El valor debe estar comprendido entre" , minimo, "y", len(actividades), end=": ")
             valor = int(input("Seleccione una actividad: "))
 
     print("el valor seleccionado", valor)
