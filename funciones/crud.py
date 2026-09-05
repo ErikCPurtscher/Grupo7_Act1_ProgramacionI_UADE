@@ -101,9 +101,6 @@ def modificar_socio(socios, actividades):
                 socios[pos][4] = 'activo'
         print()
         # Mostrar registro modificado
-        # === IDEA ===> ACÁ TAMBIÉN SE PODRÍA ESPERAR UNA ÚLTIMA CONFIRMACIÓN
-            # Quizá si al inicio se utiliza un [while cont == 0] y que el cont solo aumente si en esta etapa se confirma la modificación del registro.
-            # De esa manera se mantiene el ciclo de 
         print("Registro modificado.")
         print()
         print("Código:", socios[pos][0])
