@@ -6,18 +6,21 @@ def consultar_actividades(actividades, largo_actividades, minimo):
         cont +=1
 
 def seleccionar_actividad(actividades):
-    
+    print()
     print("Actividades disponibles")
     largo_actividades = len(actividades)
     minimo = 1
     consultar_actividades(actividades, largo_actividades, minimo)
-
+    print()
     valor = int(input("Seleccione una actividad: "))
     while valor < minimo or valor > largo_actividades:
             print("El valor debe estar comprendido entre" , minimo, "y", len(actividades), end=": ")
+            print()
             valor = int(input("Seleccione una actividad: "))
 
-    print("el valor seleccionado", valor)
+    print("Actividad seleccionada:", valor, end=" ")
+    print("-", actividades[valor-1])
+    print()
     return actividades[valor-1]
 
 

@@ -2,6 +2,7 @@ def validar_texto(mensaje):
     texto = input(mensaje)
     while texto == "":
         print("El valor no puede estar vacío.")
+        print()
         texto = input(mensaje)
     return texto    
 
@@ -9,7 +10,7 @@ def validar_texto(mensaje):
 def validar_positivo():
     valor = int(input())
     while valor <0:
-        print("El valor debe ser positivo", end=" ")
+        print("El valor debe ser positivo:", end=" ")
         valor = int(input())
     return  valor
 

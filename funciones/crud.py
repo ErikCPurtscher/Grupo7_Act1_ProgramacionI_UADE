@@ -17,8 +17,8 @@ def buscar_socio(socios, codigo):
     return pos
 
 def dar_alta(socios, actividades):
-    print("Dar de alta un registro")
-
+    print("ALTA DE SOCIO")
+    print()
     codigo_maximo = 0
     for socio in socios:
         if socio[0] > codigo_maximo:
@@ -28,21 +28,23 @@ def dar_alta(socios, actividades):
     nombre = validar_texto("Nombre del socio: ")
     nombre_actividad= seleccionar_actividad(actividades)
 
-    print("Ingrese el valor de la cuota")
+    print("Ingrese el valor de la cuota:", end=" ")
     valor_cuota = validar_positivo()
+    print()
 
     estado = "activo"
 
     socio = [codigo, nombre, nombre_actividad, valor_cuota, estado]
     socios.append(socio)
 
-    print("Socio registrado con éxito:")
+    print("¡Socio registrado con éxito!")
+    # mostrar_socios(socio)
     print(socio)
-    return
+
 
 def consultar(socios):
-    print("Consultar un registro")
-
+    print("CONSULTAR SOCIO")
+    print()
     print("Indique el registro a consultar: ", end= "")
     registro= validar_positivo()   
     pos = buscar_socio(socios, registro)
@@ -56,35 +58,38 @@ def consultar(socios):
   
 
 def modificar_socio(socios, actividades):
-    print("Modificar un registro")
+    print("MODIFICAR SOCIO")
+    print()
     # Lectura del registro
-    registro = int(input("Indique el registro a modificar: "))
+    print("Indique el registro a modificar: ", end= "")
+    registro = validar_positivo() 
     # Búsqueda del registro. Si el registro existe, se solicitan los nuevos valores
     pos = buscar_socio(socios, registro)
 
     if pos != -1:
         print("Registro encontrado.")
+        print()
         # Modificar nombre y apellido
         print("Nombre y Apellido: [" , socios[pos][1] ,"]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
-            nombre = validar_texto("Ingres nuevo nombre y apellido: ")
+            nombre = validar_texto("Ingrese nuevo nombre y apellido: ")
             socios[pos][1] = nombre
-        
+        print()
         # Modificar actividad
         print("Actividad principal: [" , socios[pos][2] , "]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
             nueva_actividad = seleccionar_actividad(actividades)
             socios[pos][2] = nueva_actividad
-
+        print()
         # Modificar valor de cuota
         print("Valor de cuota: [" , socios[pos][3] , "]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
             valor_cuota = validar_positivo()
             socios[pos][3] = valor_cuota
-
+        print()
         # Modificar estado
         print("Estado: [" , socios[pos][4] , "]")
         confirmacion = validar_confirmacion()
@@ -93,12 +98,13 @@ def modificar_socio(socios, actividades):
                 socios[pos][4] = 'inactivo'
             if socios[pos][4] == 'inactivo':
                 socios[pos][4] = 'activo'
-
+        print()
         # Mostrar registro modificado
         # === IDEA ===> ACÁ TAMBIÉN SE PODRÍA ESPERAR UNA ÚLTIMA CONFIRMACIÓN
             # Quizá si al inicio se utiliza un [while cont == 0] y que el cont solo aumente si en esta etapa se confirma la modificación del registro.
             # De esa manera se mantiene el ciclo de 
         print("Registro modificado.")
+        print()
         print("Código:", socios[pos][0])
         print("Socio:", socios[pos][1])
         print("Actividad principal:", socios[pos][2])
@@ -111,8 +117,9 @@ def modificar_socio(socios, actividades):
                 
 
 def eliminar(socios):
-    print("Eliminar un registro")
-
+    print("ELIMINAR SOCIO")
+    print()
+    print("Indique el registro a eliminar: ", end= "") 
     registro = validar_positivo()
 
     pos = buscar_socio(socios, registro)

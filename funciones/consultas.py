@@ -12,7 +12,8 @@ def filtrar_por_actividad(socios, actividad):
 
 
 def mostrar_socios(socios):
-
+    print("MOSTRAR TODOS LOS SOCIOS")
+    print()
     encabezados = ["CÓD", "NOMBRE", "ACTIVIDAD", "VALOR CUOTA", "ESTADO"]
     anchos = []
     

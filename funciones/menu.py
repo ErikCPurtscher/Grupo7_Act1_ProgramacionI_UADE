@@ -8,6 +8,7 @@ def mostrar_menu():
     print("6. Consultar socios por actividad")
     print("7. Ver estadísticas")
     print("8. Salir")
+    print()
 
 def pedir_opcion():
     opcion = int(input("Seleccione una opción: "))
