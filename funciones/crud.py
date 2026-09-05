@@ -1,5 +1,5 @@
 from funciones.utilidades import seleccionar_actividad
-from funciones.validaciones import validar_positivo, validar_texto, validar_rango, validar_confirmacion
+from funciones.validaciones import validar_positivo, validar_texto, validar_confirmacion
 from funciones.consultas import mostrar_socios
 
 
@@ -38,7 +38,6 @@ def dar_alta(socios, actividades):
     socios.append(socio)
 
     print("¡Socio registrado con éxito!")
-    # mostrar_socios(socio)
     print(socio)
 
 
