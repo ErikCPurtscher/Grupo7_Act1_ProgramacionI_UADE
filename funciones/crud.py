@@ -113,23 +113,14 @@ def modificar_socio(socios, actividades):
 def eliminar(socios):
     print("Eliminar un registro")
 
-    registro = int(input("Indique el registro a eliminar: "))
+    registro = validar_positivo()
 
-    #mismo tema que en modificar, valido buscando el código
-    encontrado = False
-    for fila in range(len(socios)):
-        if registro == socios[fila][0]:
-            encontrado = True
+    pos = buscar_socio(socios, registro)
 
-    while encontrado == False:
-        registro = int(input("No existe el número de registro, seleccione otro: "))
-        for fila in range(len(socios)):
-            if registro == socios[fila][0]:
-                encontrado = True
+    if pos != -1:
 
-    for fila in range(len(socios)):
-        if registro == socios[fila][0]:
-            print("Socio eliminado con éxito:", socios[fila])
-            socios.remove(socios[fila]) #No vimos la función remove en la materia, hay que usar pop
-            return
-
+        socio_eliminado = socios.pop(pos)
+        print("Socio eliminado con éxito:", socio_eliminado)
+    else:
+        print("El registro", registro, "no existe")
+    
