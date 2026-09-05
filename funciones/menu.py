@@ -16,7 +16,3 @@ def pedir_opcion():
         opcion = int(input("Seleccione un número del 1 al 8: "))
     return opcion
 
-  #op = int(input("Ingrese el númeor de una opción: "))
-  #while (op <= 0 or op > 7) and op != -1:
-  #  print("Opción inválida - Ingrese un número del 1 al 8")
-  #  =op int(input("Ingrese el númeor de una opción: "))
