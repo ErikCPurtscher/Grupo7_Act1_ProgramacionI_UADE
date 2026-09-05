@@ -82,7 +82,7 @@ def modificar_socio(socios, actividades):
         if confirmacion == "S" or confirmacion == "s":
             nueva_actividad = seleccionar_actividad(actividades)
             socios[pos][2] = nueva_actividad
-        # Ya se printea un espacio en fn seleccionar_actividad()
+        print()
         # Modificar valor de cuota
         print("Valor de cuota: [" , socios[pos][3] , "]")
         confirmacion = validar_confirmacion()
@@ -97,7 +97,7 @@ def modificar_socio(socios, actividades):
         if confirmacion == "S" or confirmacion == "s":
             if socios[pos][4] == 'activo':
                 socios[pos][4] = 'inactivo'
-            if socios[pos][4] == 'inactivo':
+            elif socios[pos][4] == 'inactivo':
                 socios[pos][4] = 'activo'
         print()
         # Mostrar registro modificado
