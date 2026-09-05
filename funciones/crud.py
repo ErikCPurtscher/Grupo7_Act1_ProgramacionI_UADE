@@ -82,11 +82,12 @@ def modificar_socio(socios, actividades):
         if confirmacion == "S" or confirmacion == "s":
             nueva_actividad = seleccionar_actividad(actividades)
             socios[pos][2] = nueva_actividad
-        print()
+        # Ya se printea un espacio en fn seleccionar_actividad()
         # Modificar valor de cuota
         print("Valor de cuota: [" , socios[pos][3] , "]")
         confirmacion = validar_confirmacion()
         if confirmacion == "S" or confirmacion == "s":
+            print("Ingrese nuevo valor de cuota:", end=" ")
             valor_cuota = validar_positivo()
             socios[pos][3] = valor_cuota
         print()
