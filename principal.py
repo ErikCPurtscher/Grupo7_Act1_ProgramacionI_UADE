@@ -2,6 +2,7 @@
 from funciones.menu import mostrar_menu, pedir_opcion
 from funciones.crud import dar_alta, consultar, modificar_socio, eliminar
 from funciones.consultas import  mostrar_socios, consultar_por_actividad
+from funciones.estadisticas import calcular_estadisticas
 from datos import actividades, socios
 
 
@@ -23,6 +24,6 @@ while opcion != 8:
     elif opcion == 6:
         consultar_por_actividad(socios, actividades)
     elif opcion == 7:
-        None
+        calcular_estadisticas(socios, actividades)
     elif opcion == 8:
         print("Saliendo...")
