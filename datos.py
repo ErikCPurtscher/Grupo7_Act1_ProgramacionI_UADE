@@ -1,4 +1,4 @@
-ACTIVIDADES = ["Musculacion", "Funcional", "Pileta", "Yoga", "Spinning"]
+actividades = ["Musculacion", "Funcional", "Pileta", "Yoga", "Spinning"]
 
 socios = [
     [1,  "Erik Purtscher",      "Musculacion", 15000, "activo"],
