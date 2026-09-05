@@ -1,3 +1,5 @@
+from funciones.validaciones import validar_rango
+
 
 def consultar_actividades(actividades, largo_actividades, minimo):
     cont= minimo   
@@ -11,13 +13,7 @@ def seleccionar_actividad(actividades):
     largo_actividades = len(actividades)
     minimo = 1
     consultar_actividades(actividades, largo_actividades, minimo)
-    
-    valor = int(input("Seleccione una actividad: "))
-    while valor < minimo or valor > largo_actividades:
-            print("El valor debe estar comprendido entre" , minimo, "y", len(actividades), end=": ")
-            print()
-            valor = int(input("Seleccione una actividad: "))
-
+    valor = validar_rango(minimo, largo_actividades)
     print("Actividad seleccionada:", valor, end=" ")
     print("-", actividades[valor-1])
     print()
